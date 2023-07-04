@@ -1,0 +1,30 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.InvoicePencil
+@{
+    ViewBag.Title = "newPencil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Fatura Kalem Ekleme</h2>
+<br />
+<form class="form-group" method="post">
+   
+    @Html.Label("Açıklama")
+    @Html.TextBoxFor(x => x.explanation, new { @class = "form-control" })
+    <br />
+    @Html.Label("Miktar")
+    @Html.TextBoxFor(x => x.quantity, new { @class = "form-control" })
+    <br />
+    @Html.Label("Birim Fiyat")
+    @Html.TextBoxFor(x => x.unitPrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tutar")
+    @Html.TextBoxFor(x => x.total, new { @class = "form-control" })
+    <br />
+    @Html.Label("Fatura ID")
+    @Html.TextBoxFor(x => x.invoiceId, new { @class = "form-control",@Value= @ViewBag.invoiceId })
+    <br />
+
+    <button class="btn btn-info mt-3">Kaydet</button>
+</form>
+

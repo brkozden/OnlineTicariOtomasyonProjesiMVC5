@@ -1,0 +1,15 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.Category
+@{
+    ViewBag.Title = "addCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Kategori Sayfası</h2>
+<br />
+
+<form class="form-group" method="post">
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.categoryName, new { @class = "form-control"})
+    <button class="btn btn-info mt-3" id="saveCtg">Kaydet</button>
+</form>

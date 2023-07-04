@@ -1,0 +1,51 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Current>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Müşteriler</h2>
+<br />
+
+<div class="d-flex justify-content-between">
+    <a href="/Current/addCurrent" class="btn btn-success">Yeni Müşteri Ekle</a>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<String>
+    {"page-link" }
+})
+</div>
+<br />
+
+<table class="table table-striped">
+    <tr>
+        
+        <th>Adı</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+           
+            <td>@item.currentName</td>
+            <td>@item.currentSurname</td>
+            <td>@item.currentCity</td>
+            <td>@item.currentMail</td>
+            <td><a href="/Current/removeCurrent/@item.currentId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Current/bringCurrent/@item.currentId" class="btn btn-info">Güncelle</a></td>
+            <td><a href="/Current/saleCustomer/@item.currentId" class="btn btn-success">Satış Geçmişi</a></td>
+        </tr>
+
+    }
+</table>
+
+

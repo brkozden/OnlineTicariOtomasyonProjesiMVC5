@@ -1,0 +1,29 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@model List<CargoTracking>
+@{
+    ViewBag.Title = "cargoTrackingDetail";
+    Layout = "~/Views/Shared/_BuyingLayout.cshtml";
+}
+<br />
+<h2>Kargo Detayları</h2>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Sıra</th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+
+    </tr>
+    @{int sira = 0; }
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@{sira++;}@sira</td>
+            <td>@item.explanation</td>
+            <td>@item.date</td>
+
+        </tr>
+
+    }
+</table>

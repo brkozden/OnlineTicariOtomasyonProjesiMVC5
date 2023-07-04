@@ -1,0 +1,37 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.Product
+@{
+    ViewBag.Title = "addProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Ürün Ekleme</h2>
+<br />
+@using (Html.BeginForm("addProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{ 
+    @Html.Label("Ürün Adı")
+@Html.TextBoxFor(x => x.productName, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Markası")
+@Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Stok Sayısı")
+@Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Alış Fiyatı")
+@Html.TextBoxFor(x => x.purchasePrice, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Satış Fiyatı")
+@Html.TextBoxFor(x => x.salePrice, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Durumu")
+@Html.TextBoxFor(x => x.Status, new { @class = "form-control" })
+<br />
+@Html.Label("Ürün Görseli")
+    <br />
+<input type="file" name="productImg" />
+<br />
+@Html.Label("Ürün Kategori")
+@Html.DropDownListFor(x => x.categoryId, (List<SelectListItem>)ViewBag.categoryValue, new { @class = "form-control" })
+<br />
+<button class="btn btn-primary">Kaydet</button>
+}

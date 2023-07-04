@@ -1,0 +1,43 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@model List<SaleTransaction>
+@{
+    ViewBag.Title = "detailSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Detayı</h2>
+<br />
+
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Müşteri</th>
+        <th>Personel</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.saleId</td>
+            <td>@item.products.productName</td>
+            <td>@item.currents.currentName @item.currents.currentSurname</td>
+            <td>@item.employees.employeeName @item.employees.employeeSurname</td>
+            <td>@item.count</td>
+            <td>@item.price</td>
+            <td>@item.total</td>
+            <td>@item.date</td>
+
+        </tr>
+
+    }
+</table>
+  
+
+

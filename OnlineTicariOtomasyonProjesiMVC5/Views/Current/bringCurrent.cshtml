@@ -1,0 +1,33 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.Current
+@{
+    ViewBag.Title = "bringCurrent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Müşteri Güncelleme</h2>
+<br />
+@using (Html.BeginForm("updateCurrent", "Current", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.currentId)
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.currentName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.currentName, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("Soyad")
+    @Html.TextBoxFor(x => x.currentSurname, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.currentSurname, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("Şehir")
+    @Html.TextBoxFor(x => x.currentCity, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.currentCity, "", new { @style = "color: red" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.currentMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.currentMail, "", new { @style = "color: red" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</div>
+  }
+

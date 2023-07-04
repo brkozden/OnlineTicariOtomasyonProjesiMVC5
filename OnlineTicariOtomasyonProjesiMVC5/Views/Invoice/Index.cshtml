@@ -1,0 +1,58 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Invoice>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div class="d-flex justify-content-between">
+    <a href="/Invoice/addInvoice/" class="btn btn-info">Yeni Fatura Ekle</a>
+
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<String>
+    {"page-link" }
+})
+</div>
+<table class="table table-striped" style="margin-top:1.4rem">
+    <tr>
+
+        <th>Seri - Sıra No</th>
+
+        <th>Vergi Dairesi</th>
+        <th>Tarih</th>
+        <th>Saat</th>
+        <th>Teslim Eden</th>
+        <th>Teslim Alan</th>
+        <th>Toplam</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+        <th>Yeni Kalem</th>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+
+        <tr>
+
+            <td>@k.invoiceSerialNo - @k.invoiceSequenceNo </td>
+
+            <td>@k.taxOffice </td>
+            <td>@k.Date.ToShortDateString() </td>
+            <td>@k.Hour </td>
+            <td>@k.consigner </td>
+            <td>@k.recipient </td>
+            <td>@k.total ₺</td>
+
+            <td><a href="/Invoice/bringInvoice/@k.invoiceId" class="btn btn-info">Güncelle</a></td>
+            <td><a href="/Invoice/detailInvoice/@k.invoiceId" class="btn btn-success">Detay</a></td>
+
+            <td><a href="/Invoice/detailInvoice/@k.invoiceId" class="btn btn-primary">Kalem</a></td>
+
+        </tr>
+    }
+</table>

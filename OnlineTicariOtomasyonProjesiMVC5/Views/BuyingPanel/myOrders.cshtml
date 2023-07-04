@@ -1,0 +1,29 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@model List<SaleTransaction>
+@{
+    ViewBag.Title = "myOrders";
+    Layout = "~/Views/Shared/_BuyingLayout.cshtml";
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Adet</th>
+        <th>Birim Fiyat</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>
+        <th>Satış Elemanı</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.products.productName</td>
+    <td>@item.count</td>
+    <td>@item.price</td>
+    <td>@item.total</td>
+    <td>@item.date.ToShortDateString()</td>
+    <td>@item.employees.employeeName @item.employees.employeeSurname</td>
+</tr>
+    }
+
+</table>

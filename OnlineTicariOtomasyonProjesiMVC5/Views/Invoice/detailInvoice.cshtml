@@ -1,0 +1,39 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@model List<InvoicePencil>
+@{
+    ViewBag.Title = "detailInvoice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Detayı</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Fatura Bilgileri: <b class="info" style="font-size:large">@ViewBag.invoiceNo</b> </li>
+</ol>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Fatura Kalem ID</th>
+        <th>Açıklama</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Tutar</th>
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.invoicePencilId</td>
+            <td>@item.explanation</td>
+            <td>@item.quantity</td>
+            <td>@item.unitPrice ₺</td>
+            <td>@item.total ₺</td>
+       
+           
+        </tr>
+    }
+
+</table>
+<a href="/Invoice/newPencil/@ViewBag.invoiceId" class="btn btn-warning" style="color:black">Yeni Kalem Girişi</a>

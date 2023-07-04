@@ -1,0 +1,47 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.SaleTransaction
+@{
+    ViewBag.Title = "sell";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+  <br />
+  
+<h2>Satış Yap</h2>
+  <br />
+
+<form class="form-group" method="post">
+
+    @Html.Label("Ürün Id")
+    <input type="text" name="productId" value="@ViewBag.product" class="form-control" readonly />
+    <br />
+    @Html.Label("Personel")
+    @Html.DropDownListFor(x => x.employeeId, (List<SelectListItem>)ViewBag.employee, new { @class = "form-control" })
+    <br />
+    @Html.Label("Müşteri Id")
+    @Html.TextBoxFor(x => x.currentId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Adet")
+   <input type="number"name="count" class="form-control" min="1" max="100" value="1" id="count" onchange="sum();"/>
+    <br />
+    @Html.Label("Ürün Satış Fiyatı")
+    <input type="text" name="price" value="@ViewBag.productPrice" class="form-control"  id="price" onchange="sum();" />
+    <br />
+    @Html.Label("Toplam Tutar")
+<input type="text" name="total" value="@ViewBag.productPrice" class="form-control" id="total" readonly />
+    <br />
+   
+    <button class="btn btn-success">Satış Yap</button>
+
+</form>
+
+<script>
+    function sum() {
+        var count = document.getElementById("count").value;
+        var price = document.getElementById("price").value;
+        var total = parseInt(count) * parseInt(price);
+
+        if (!isNaN(total)) {
+            document.getElementById("total").value = total;
+        }
+
+    }
+</script>

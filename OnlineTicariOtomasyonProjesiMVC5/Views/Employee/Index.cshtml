@@ -1,0 +1,47 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<table class="table table-bordered" style="margin-top:1.4rem">
+    <tr style="text-align: center">
+     
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Görsel</th>
+        <th>Departman</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+
+    </tr>
+    @foreach (var k in Model)
+    {
+
+        <tr style="text-align: center">
+          
+            <td>@k.employeeName </td>
+            <td>@k.employeeSurname </td>
+            <td> <img src="@k.employeeImage" style="width: 75px; height:50px" /> </td>
+            <td>@k.departments.departmentName </td>
+
+            <td><a href="/Employee/bringEmployee/@k.employeeId" class="btn btn-info">Güncelle</a></td>
+            <td><a href="/Department/saleDepartmentEmployee/@k.employeeId" class="btn btn-success">Detay</a></td>
+
+        </tr>
+    }
+</table>
+<div class="d-flex justify-content-between">
+    <a href="/Employee/addEmployee" class="btn btn-info">Personel Ekle</a>
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+{
+    LiElementClasses = new List<String>
+    {"page-link" }
+})
+</div>

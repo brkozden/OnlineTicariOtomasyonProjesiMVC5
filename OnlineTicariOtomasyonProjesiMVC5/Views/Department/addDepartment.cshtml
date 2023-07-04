@@ -1,0 +1,13 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.Department
+@{
+    ViewBag.Title = "addDepartment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Departman Ekle</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Departman Adı")
+    @Html.TextBoxFor(x => x.departmentName , new { @class = "form-control" })
+    <button class="btn btn-info mt-3">Kaydet</button>
+</form>

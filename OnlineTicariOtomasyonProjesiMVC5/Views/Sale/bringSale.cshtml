@@ -1,0 +1,41 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.SaleTransaction
+@{
+    ViewBag.Title = "bringSale";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış İşlemi Güncelleme Sayfası</h2>
+<br />
+
+@using (Html.BeginForm("updateSale", "Sale", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.saleId)
+    @Html.Label("Ürün Adı")
+        @Html.DropDownListFor(x => x.productId, (List<SelectListItem>)ViewBag.value1, new { @class = "form-control" })
+        <br />
+        @Html.Label("Müşteri")
+        @Html.DropDownListFor(x => x.currentId, (List<SelectListItem>)ViewBag.value2, new { @class = "form-control" })
+        <br />
+        @Html.Label("Personel")
+        @Html.DropDownListFor(x => x.employeeId, (List<SelectListItem>)ViewBag.value3, new { @class = "form-control" })
+        <br />
+    @Html.Label("Adet")
+    @Html.TextBoxFor(x => x.count, new { @class = "form-control" })
+    <br />
+    @Html.Label("Fiyat")
+    @Html.TextBoxFor(x => x.price, new { @class = "form-control" })
+    <br />
+    @Html.Label("Toplam")
+    @Html.TextBoxFor(x => x.total, new { @class = "form-control" })
+    <br />
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.date, new { @class = "form-control" })
+    <br />
+
+
+
+    <button class="btn btn-primary">Güncelle</button>
+}
+
+

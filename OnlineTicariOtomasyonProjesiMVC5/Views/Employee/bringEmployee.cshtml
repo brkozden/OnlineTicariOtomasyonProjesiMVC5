@@ -1,0 +1,35 @@
+﻿@model OnlineTicariOtomasyonProjesiMVC5.Models.Classes.Employee
+
+@{
+    ViewBag.Title = "bringEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personel Güncelleme</h2>
+<br />
+
+@using (Html.BeginForm("updateEmployee", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.employeeId)
+    @Html.Label("Ad")
+    @Html.TextBoxFor(x => x.employeeName, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Soyad")
+    @Html.TextBoxFor(x => x.employeeSurname, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Görsel")
+    <br />
+    <input type="file" name="employeeImage" />
+    <br />  <br />
+    @Html.Label("Departman")
+    @Html.DropDownListFor(x => x.departmentId, (List<SelectListItem>)ViewBag.departmenList, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+</div>
+}
+

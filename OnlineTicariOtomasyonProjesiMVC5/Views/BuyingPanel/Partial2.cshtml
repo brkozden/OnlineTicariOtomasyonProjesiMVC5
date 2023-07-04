@@ -1,0 +1,53 @@
+﻿@using OnlineTicariOtomasyonProjesiMVC5.Models.Classes
+@model List<Message>
+@foreach (var item in Model)
+{
+   
+    <div class="timeline timeline-inverse">
+
+        <!-- timeline time label -->
+
+        <div class="time-label ">
+
+            <span class="bg-success">
+
+                @item.date.ToShortDateString()
+
+            </span>
+            <div class="user-block m-2" style="">
+
+                <img class="img-circle img-bordered-sm" src="~/Image/CurrentPanel/mail-icon.png" alt="user image">
+
+
+
+            </div>
+        </div>
+
+        <!-- /.timeline-label -->
+        <!-- timeline item -->
+
+        <div>
+          
+
+
+            <div class="timeline-item">
+
+                <span class="time"><i class="far fa-clock"></i> @item.date.ToShortTimeString()</span>
+
+                <h3 class="timeline-header"><a href="#">@item.sender</a> bir duyuru paylaştı.</h3>
+
+                <div class="timeline-body">
+                    <h5>Konu: @item.subject </h5>
+                    <br />
+                    @item.text
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+}
